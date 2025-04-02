@@ -5,7 +5,7 @@ with open("str.txt", "r") as f:
 pos1 = int(input("pos1 = "))
 pos2 = int(input("pos2 = "))
 
-if 0 <= pos1 and pos2 <= len_str:
+if 0 <= pos1 <= len_str and 0 <= pos2 < len_str:
     with open("str.txt") as f:
         read_line = f.readlines()
         read_line[pos1], read_line[pos2] = read_line[pos2], read_line[pos1]

@@ -3112,7 +3112,7 @@ import re
 #         fw.write(line)
 
 
-import os
+# import os
 
 # print(os.getcwd())
 # print(os.listdir())
@@ -3126,3 +3126,126 @@ import os
 # os.remove("xyz.txt")
 # os.rename("two.txt", "www.txt")
 # os.rename("www.txt", "nested1/www.txt")
+
+# ///////////////// 23 LESSION ///////////////////
+
+# import os
+#
+# print(os.walk(r"D:\HTML"))
+# for root, dirs, files in os.walk(r"D:\HTML", topdown=False):
+#     print("Root", root)
+#     print("\tDirs", dirs)
+#     print("\t\tFiles", files)
+
+# import os.path
+#
+# print(os.path.split(r"D:\HTML\HTML\HTML\H5\t4.pnd"))
+#
+# print(os.path.join(r"D:\HTML", "HTML", "HTML", "H5", "t4.pnd"))
+
+import os
+
+dirs = [r"Work\F1", r"Work\F2\F21"]
+# for d in dirs:
+#     os.makedirs(d)
+
+files = {
+    "Work": ["w.txt"],
+    r"Work\F1": ["f11.txt", "f12.txt", "f13.txt"],
+    r"Work\F2\F21": ["f211.txt", "f212.txt"]
+}
+
+for dirs, files in files.items():
+    for file in files:
+        file_path = os.path.join(dirs, file)
+        # print(file_path)
+        open(file_path, "w").close()
+
+
+file_with_text = [r"Work\w.txt", r"Work\F1\f12.txt", r"Work\F2\F21\f211.txt", r"Work\F2\F21\f212.txt"]
+
+for file in file_with_text:
+    with open(file, "w") as f:
+        f.write(f"Какой-то текст в файле {file}")
+
+
+def print_tree(root, topdown):
+    print(f"Обход {root} {'сверху вниз' if topdown else 'снизу вверх'}")
+    for root, directory, file_name in os.walk(root, topdown):
+        print(root)
+        print(directory)
+        print(file_name)
+    print("-" * 50)
+
+
+print_tree("Work", False)
+print_tree("Work", True)
+#
+# import os
+# import time
+
+# print(os.path.exists(r"Work\F2\F21\f211.txt"))
+# print(os.path.isfile(r"Work\F2\F21\f211.txt"))
+# print(os.path.isdir(r"Work\F2\F21\f211.txt"))
+
+# file = "main.py"
+#
+# print(os.path.getsize(file))
+# print(os.path.getatime(file))
+# print(os.path.getmtime(file))
+# print(os.path.getctime(file))
+#
+# kb = os.path.getsize(file)
+# a = os.path.getatime(file)
+# m = os.path.getmtime(file)
+# c = os.path.getctime(file)
+#
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(a)))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(m)))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(c)))
+# print(kb // 1024)
+#
+# class Point:
+#     x = 1
+#     y = 2
+#
+#
+# p1 = Point()
+# p1.x = 10
+# p1.y = 20
+# # Point.x = 100
+# print(p1.x, p1.y)
+# print(p1.__dict__)
+#
+# p2 = Point()
+# print(p2.x, p2.y)
+# p2.x = 5
+# print(p2.__dict__)
+#
+# print(Point.__dict__)
+#
+# class Point:
+#     """Это класс для предоставления координат точек на плоскости"""
+#     x = 1
+#     y = 2
+#
+#     def set_coord(self, x1, y1):
+#         self.x = x1
+#         self.y = y1
+#
+#
+# p1 = Point()
+# print(Point.__doc__)
+# print(Point.__dict__)
+# # print(type(p1))
+# # p1.x = 5
+# # p1.y = 10
+# p1.set_coord(5, 10)
+# print(p1.__dict__)
+# print(p1.x)
+# Point.set_coord(p1, 20, 30)
+# print(p1.__dict__)
+#
+# p2 = Point()
+# p2.set_coord(100, 200)
+# print(p2.__dict__)
