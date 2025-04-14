@@ -3143,43 +3143,43 @@ import re
 #
 # print(os.path.join(r"D:\HTML", "HTML", "HTML", "H5", "t4.pnd"))
 
-import os
-
-dirs = [r"Work\F1", r"Work\F2\F21"]
-# for d in dirs:
-#     os.makedirs(d)
-
-files = {
-    "Work": ["w.txt"],
-    r"Work\F1": ["f11.txt", "f12.txt", "f13.txt"],
-    r"Work\F2\F21": ["f211.txt", "f212.txt"]
-}
-
-for dirs, files in files.items():
-    for file in files:
-        file_path = os.path.join(dirs, file)
-        # print(file_path)
-        open(file_path, "w").close()
-
-
-file_with_text = [r"Work\w.txt", r"Work\F1\f12.txt", r"Work\F2\F21\f211.txt", r"Work\F2\F21\f212.txt"]
-
-for file in file_with_text:
-    with open(file, "w") as f:
-        f.write(f"Какой-то текст в файле {file}")
-
-
-def print_tree(root, topdown):
-    print(f"Обход {root} {'сверху вниз' if topdown else 'снизу вверх'}")
-    for root, directory, file_name in os.walk(root, topdown):
-        print(root)
-        print(directory)
-        print(file_name)
-    print("-" * 50)
-
-
-print_tree("Work", False)
-print_tree("Work", True)
+# import os
+#
+# dirs = [r"Work\F1", r"Work\F2\F21"]
+# # for d in dirs:
+# #     os.makedirs(d)
+#
+# files = {
+#     "Work": ["w.txt"],
+#     r"Work\F1": ["f11.txt", "f12.txt", "f13.txt"],
+#     r"Work\F2\F21": ["f211.txt", "f212.txt"]
+# }
+#
+# for dirs, files in files.items():
+#     for file in files:
+#         file_path = os.path.join(dirs, file)
+#         # print(file_path)
+#         open(file_path, "w").close()
+#
+#
+# file_with_text = [r"Work\w.txt", r"Work\F1\f12.txt", r"Work\F2\F21\f211.txt", r"Work\F2\F21\f212.txt"]
+#
+# for file in file_with_text:
+#     with open(file, "w") as f:
+#         f.write(f"Какой-то текст в файле {file}")
+#
+#
+# def print_tree(root, topdown):
+#     print(f"Обход {root} {'сверху вниз' if topdown else 'снизу вверх'}")
+#     for root, directory, file_name in os.walk(root, topdown):
+#         print(root)
+#         print(directory)
+#         print(file_name)
+#     print("-" * 50)
+#
+#
+# print_tree("Work", False)
+# print_tree("Work", True)
 #
 # import os
 # import time
@@ -3249,3 +3249,203 @@ print_tree("Work", True)
 # p2 = Point()
 # p2.set_coord(100, 200)
 # print(p2.__dict__)
+
+# //////////// 24 LESSION ///////////
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "address"
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}")
+#         print(f"Дата рождения: {self.birthday}")
+#         print(f"Номер телефона: {self.phone}")
+#         print(f"Страна: {self.country}")
+#         print(f"Город: {self.city}")
+#         print(f"Домашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, first_name, birthday, phone, country, city, address):
+#         self.name = first_name
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.country = country
+#         self.city = city
+#         self.address = address
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия",
+#               "Москва", "Чистопрудный бульвар, 1А")
+# h1.print_info()
+# h1.set_name("Юлия")
+# h1.print_info()
+# print(h1.get_name())
+#
+# class Person:
+#     skill = 10
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#         # print("INIT for:", self.name, self.surname)
+#
+#     def __del__(self):
+#         print("Удаление экземпляров")
+#
+#     def print_info(self):
+#         print("Данные сотрудника:",  self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника:", self.skill, "\n")
+#
+#
+# p1 = Person("Виктор", "Резник")
+# p1.print_info()
+# p1.add_skill(3)
+#
+# del p1
+# print()
+#
+# p2 = Person("Анна", "Долгих")
+# p2.print_info()
+# p2.add_skill(2)
+
+# class Point:
+#     count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#         Point.count += 1
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(Point.count)
+# print(p1.count)
+# print(p2.count)
+# print(p3.count)
+
+
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print("Инициализация робота:", self.name)
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, "выключается!")
+#         Robot.k -= 1
+#         if Robot.k == 0:
+#             print(self.name, "был последним")
+#         else:
+#             print("Работающих роботов осталось", Robot.k)
+#
+#     def say_hi(self):
+#         print("Приветствую! Меня зовут:", self.name)
+#
+#
+# droid1 = Robot("R2-D2")
+# droid1.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+#
+# droid2 = Robot("C-3PO")
+# droid2.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# droid3 = Robot("PC2-3P")
+# droid3.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# print("\nЗдесь роботы могут проделать какую-то работу\n")
+# print("Роботы закончили свою работу. Давайте их выключим.")
+#
+# del droid3
+# del droid2
+# del droid1
+#
+# print("Численность роботов:", Robot.k)
+
+
+# class Point:
+#
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def __check_value(s):
+#         if isinstance(s, int) or isinstance(s, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами!")
+#
+#     def set_coord_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координаты X должны быть числами!")
+#
+#     def set_coord_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координаты Y должны быть числами!")
+#
+#     def get_coord(self):
+#         return self.__x, self.__y
+#
+#     def get_coord_x(self):
+#         return self.__x
+#
+#     def get_coord_y(self):
+#         return self.__y
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.__dict__)
+# # p1.z = 20
+# # print(p1.__x, p1.__y)
+# # p1.__x = 50
+# # p1.__y = "abc"
+# p1.set_coord(5.2, 100)
+# print(p1.get_coord())
+# p1.set_coord_x(111)
+# p1.set_coord_y(222)
+#
+# p1._Point__x = "abc"
+# print(p1._Point__x)
+# print(p1.__dict__)
+#
+
+# //////////////// 25 Lesion //////////////
+
+
+
+
+
