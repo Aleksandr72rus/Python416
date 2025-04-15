@@ -58,5 +58,3 @@ class Car:
 c1 = Car("X3", "2020", "BMW", "160", "Black", "5600000")
 c1.print_info()
 
-c2 = Car("Corolla", "2015", "Toyota", "120", "White", "3500000")
-c2.print_info()
