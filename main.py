@@ -4080,28 +4080,28 @@ import re
 # print(v)
 # print(type(v))
 
-
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def set_coord(self, x=None, y=None):
-        if y is None:
-            self.x = x
-        elif x is None:
-            self.y = y
-        else:
-            self.x = x
-            self.y = y
-
-
-p1 = Point(5, 10)
-print(p1.__dict__)
-p1.set_coord(20, 30)
-print(p1.__dict__)
-p1.set_coord(y=100)
-print(p1.__dict__)
+#
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def set_coord(self, x=None, y=None):
+#         if y is None:
+#             self.x = x
+#         elif x is None:
+#             self.y = y
+#         else:
+#             self.x = x
+#             self.y = y
+#
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+# p1.set_coord(20, 30)
+# print(p1.__dict__)
+# p1.set_coord(y=100)
+# print(p1.__dict__)
 
 
 
