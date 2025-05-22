@@ -4964,32 +4964,240 @@ import re
 # c1()
 # c1()
 # c1()
+#
+# def string_strip(chars):
+#     def wrap(string):
+#         if not isinstance(string, str):
+#             raise ValueError("Аргумент должен быть строкой")
+#
+#         return string.strip(chars)
+#
+#     return wrap
+#
+#
+# s1 = string_strip("?:!;. ")
+# print(s1("  Hello World! ...  "))
+#
+#
+# class StringStrip:
+#     def __init__(self, chars):
+#         self.chars = chars
+#
+#     def __call__(self, *args, **kwargs):
+#         if not isinstance(args[0], str):
+#             raise ValueError("Аргумент должен быть строкой")
+#
+#         return args[0].strip(self.chars)
+#
+#
+# s2 = StringStrip("?:!;. ")
+# print(s2("  Hello World! ...  "))
 
-def string_strip(chars):
-    def wrap(string):
-        if not isinstance(string, str):
-            raise ValueError("Аргумент должен быть строкой")
-
-        return string.strip(chars)
-
-    return wrap
 
 
-s1 = string_strip("?:!;. ")
-print(s1("  Hello World! ...  "))
+# //////////////////// lectory 31 ///////////////////////////////////
 
 
-class StringStrip:
-    def __init__(self, chars):
-        self.chars = chars
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, a, b):
+#         return f"Перед вызовом функции \n{self.func(a, b)} \nПосле вызова функции"
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 5))
+#
 
-    def __call__(self, *args, **kwargs):
-        if not isinstance(args[0], str):
-            raise ValueError("Аргумент должен быть строкой")
+# class Power:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, a, b):
+#         return self.func(a, b) ** 2
+#
+#
+# @Power
+# def multiply(a, b):
+#     return a * b
+#
+#
+# print(multiply(2, 3))
 
-        return args[0].strip(self.chars)
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, *args, **kwargs):
+#         return f"Перед вызовом функции \n{self.func(*args, **kwargs)} \nПосле вызова функции"
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# @MyDecorator
+# def func2(a, b, c):
+#     return a + b - c
+#
+#
+# print(func(2, 5))
+# print(func2(2, 5, 3))
+# print(func2(c=2, a=5, b=3))
 
 
-s2 = StringStrip("?:!;. ")
-print(s2("  Hello World! ...  "))
+# class MyDecorator:
+#     def __init__(self, arg):  # "test"
+#         self.name = arg
+#
+#     def __call__(self, fn):  # func
+#         def wrap(*args, **kwargs):  # 2, 5
+#             print(self.name)
+#             return f"Перед вызовом функции \n{fn(*args, **kwargs)} \nПосле вызова функции"
+#
+#         return wrap
+#
+#
+# @MyDecorator("test")
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 5))
 
+
+# class Power:
+#     def __init__(self, arg):
+#         self.arg = arg
+#
+#     def __call__(self, func):
+#         def wrapper(a, b):
+#             return func(a, b) ** self.arg
+#
+#         return wrapper
+#
+#
+# @Power(3)
+# def multiply(a, b):
+#     return a * b
+#
+#
+# @Power(5)
+# def multiply1(a, b):
+#     return a + b
+#
+#
+# print(multiply(2, 2))
+# print(multiply1(3, 2))
+
+
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#     return wrap
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @dec
+#     def info(self):
+#         print(f"{self.name} {self.surname}")
+#
+#     @dec
+#     def method1(self, arg):
+#         print("Вывод аргумента:", arg)
+#
+#
+# p1 = Person("Виталий", "Карасев")
+# p1.info()
+# p1.method1("значение")
+
+
+
+# Метаклассы
+
+# a = 5
+# print(type(a))
+# print(type(int))
+
+
+# class MyList(list):
+#     def get_length(self):
+#         return len(self)
+
+
+# MyList = type(
+#     "MyList", (list,), dict(get_length=lambda self: len(self))
+# )
+#
+#
+# lst = MyList()
+# lst.append(5)
+# lst.append(7)
+# lst.append(9)
+# print(lst, lst.get_length())
+
+
+# Создание модулей
+
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+
+# from geometry import rect, sq, trian
+# from geometry import *
+
+# if __name__ == "__main__":
+#     r1 = rect.Rectangle(1, 2)
+#     r2 = rect.Rectangle(3, 4)
+#
+#     s1 = sq.Square(10)
+#     s2 = sq.Square(20)
+#
+#     t1 = trian.Triangle(1, 2, 3)
+#     t2 = trian.Triangle(4, 5, 6)
+#
+#     shape = [r1, r2, s1, s2, t1, t2]
+#
+#     for g in shape:
+#         print((g.perimetr()))
+
+# def ran():
+#     r1 = rect.Rectangle(1, 2)
+#     r2 = rect.Rectangle(3, 4)
+#
+#     s1 = sq.Square(10)
+#     s2 = sq.Square(20)
+#
+#     t1 = trian.Triangle(1, 2, 3)
+#     t2 = trian.Triangle(4, 5, 6)
+#
+#     shape = [r1, r2, s1, s2, t1, t2]
+#
+#     for g in shape:
+#         print((g.perimetr()))
+#
+#
+# if __name__ == "__main__":
+#     ran()
+
+# HW 31
+
+from car.info_car import InfoCar
+
+
+e_car = InfoCar("Tesla", "T", 2018, 99000, 100)
+e_car.about_car()
+e_car.description_battery()
