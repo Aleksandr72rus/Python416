@@ -5476,22 +5476,76 @@ import re
 
 # /////////// Lectory 33/////////////
 
-import requests
-import json
+# import requests
+# import json
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# # print(response.text)
+# todos = json.loads(response.text)
+# # print(type(todos))
+# # print(todos)
+#
+# todos_by_user = {}  # {1: 4, 2: 1
+#
+# for todo in todos:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo["userId"]] += 1
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1
+# print(todos_by_user)
+#
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)    # [(5, 12), (10, 12), (1, 11), (8, 11), (7, 9), (2, 8), (9, 8), (3, 7), (4, 6), (6, 6)]
+#
+# max_complete = top_users[0][1]
+# print(max_complete)  # 12
+#
+# users = []  # [5, 10]
+# for user, num in top_users:
+#     if num < max_complete:
+#         break
+#     users.append(str(user))
+# print(users)
+#
+# max_users = " и ".join(users)
+# print(max_users)
+#
+# print(f"Полльзователи {max_users} выполнили {max_complete} задач")
 
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
-# print(response.text)
-todos = json.loads(response.text)
-print(type(todos))
-print(todos)
+# import csv
 
-todos_by_user = {}  # {1: 4, 2: 1
+# with open("data.csv") as f:
+#     file_names = ['Имя', 'Профессия', 'Год рождения']
+#     file_reader = csv.DictReader(f, delimiter=";", fieldnames=file_names)
+#     count = 0
+#     for row in file_reader:
+#         # print(row)
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         print(f"\t{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
+#         count += 1
 
-for todo in todos:
-    if todo["completed"]:
-        try:
-            todos_by_user[todo["userId"]] += 1
-        except KeyError:
-            todos_by_user[todo["userId"]] = 1
-print(todos_by_user)
+import csv
+#
+# with open("student.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator='\r')
+#     writer.writerow(['Имя', 'Класс', 'Возраст'])
+#     writer.writerow(['Женя', 9, 15])
+#     writer.writerow(['Саша', 5, 12])
+#     writer.writerow(['Маша', 11, 17])
 
+data = [['hostname', 'vendor', 'model', 'location'],
+        ['sw1', 'Cisco', '3750', 'London, Best str'],
+        ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+        ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+        ['sw4', 'Cisco', '3650', 'London, Best str']]
+
+with open("sw_data.csv", "w") as f:
+    writer = csv.writer(f, delimiter=";", lineterminator='\r')
+    # for row in data:
+    #     writer.writerow(row)
+    writer.writerows(data)
+
+with open("sw_data.csv", "r") as f:
+    print(f.read())
