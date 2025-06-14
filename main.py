@@ -5936,18 +5936,50 @@ import re
 #
 # print(msg)
 
-from jinja2 import Environment, FileSystemLoader
+# from jinja2 import Environment, FileSystemLoader
+#
+# persons = [
+#     {"name": "Алексей"},
+#     {"name": "Никита"},
+#     {"name": "Виталий"}
+# ]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('about.html')
+# msg = tm.render(users=persons, title="About Jinja")
+#
+# print(msg)
 
-persons = [
-    {"name": "Алексей"},
-    {"name": "Никита"},
-    {"name": "Виталий"}
-]
+# import sqlite3
 
-file_loader = FileSystemLoader('templates')
-env = Environment(loader=file_loader)
+# con = sqlite3.connect("profile.db")
+# cur = con.cursor()
+#
+# cur.execute("")
+#
+# con.close()
+#
+# with sqlite3.connect("profile.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""CREATE TABLE IF NOT EXISTS users(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     summa REAL,
+#     data TEXT
+#     )""")
+#     cur.execute("DROP TABLE users")
 
-tm = env.get_template('about.html')
-msg = tm.render(users=persons, title="About Jinja")
+# /////////////// 37 Lectory ////////////////
 
-print(msg)
+import sqlite3
+
+
+with sqlite3.connect("users.db") as con:
+    cur = con.cursor()
+    cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+                
+    )""")
