@@ -1,6 +1,29 @@
 1.	Выведите перечень сумм заказов продавца Rifkin.
 
+SELECT o.amt
+FROM Orders o, Salespeople s
+WHERE s.snum = o.snum AND s.sname = 'Rifkin';
+
+SELECT amt
+FROM Orders
+WHERE snum = 
+    (SELECT snum
+    FROM Salespeople
+    WHERE sname = 'Rifkin'
+    );
+
 2.	Определите  комиссионные всех продавцов, обслуживающих заказчиков в Риме
+
+SELECT s.com
+FROM Salespeople s, Customers c
+WHERE s.snum = c.snum AND c.city = 'Rome';
+
+SELECT com
+FROM Salespeople
+WHERE snum IN 
+    (SELECT snum
+    FROM Customers
+    WHERE city = "Rome" 
 
 3.	Напишите запрос, который определит заказчиков имеющих рейтинг ниже среднего.
 
@@ -8,10 +31,59 @@
 
 5.	Напишите запрос, который выводил бы заказы клиента Liu
 
+SELECT *
+FROM Orders o, Customers c
+WHERE o.snum = c.snum AND c.cname = 'Liu';
+
+SELECT *
+FROM Orders
+WHERE snum = 
+    (SELECT snum
+    FROM Customers
+    WHERE cname = "Liu" 
+)
+  
+
 6.	Определите наибольшие комиссионные продавца для Рима.
+
+SELECT MAX(s.com)
+FROM Salespeople s, Customers c
+WHERE s.snum = c.snum AND c.city = 'Rome';
+
+SELECT MAX(com)
+FROM Salespeople
+WHERE snum IN 
+    (SELECT snum
+    FROM Customers
+    WHERE city = "Rome" 
+)
+  
 
 7.	Напишите запрос который выведет всех клиентов обслуживаемых продавцом Motiка.
 
+SELECT c.cname, c.city
+FROM Salespeople s, Customers c
+WHERE s.snum = c.snum AND s.sname = 'Motika';
+
+SELECT cname, city
+FROM Customers
+WHERE snum IN 
+    (SELECT snum
+    FROM Salespeople
+    WHERE sname = 'Motika' 
+)
+
 8.	Напишите запрос, который выведет максимальный рейтинг заказчика для продавцов имеющих комиссионные больше 0,11%.
 
+SELECT c.cname, c.rating
+FROM Salespeople s, Customers c
+WHERE s.snum = c.snum AND s.com > 0.11;
+
+SELECT cname, rating
+FROM Customers
+WHERE snum IN 
+    (SELECT snum
+    FROM Salespeople
+    WHERE com > 0.11 
+)
 
