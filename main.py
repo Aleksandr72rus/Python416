@@ -5973,13 +5973,67 @@ import re
 
 # /////////////// 37 Lectory ////////////////
 
+# import sqlite3
+#
+#
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    # id INTEGER PRIMARY KEY AUTOINCREMENT,
+    # name TEXT NOT NULL,
+    # phone BLOB NOT NULL DEFAULT "+7 909 1234567",
+    # age INTEGER CHECK(age > 0 AND age < 100),
+    # email TEXT UNIQUE
+    #
+    # )""")
+
+    # переименование таблицы
+    # cur.execute("""
+    # ALTER TABLE users
+    # RENAME TO person_table;
+    # """)
+
+    # добавление нового столбца
+    # cur.execute("""
+    #    ALTER TABLE person_table
+    #    ADD COLUMN address TEXT;
+    #    """)
+
+    # переименование столбцов
+    # cur.execute("""
+    #      ALTER TABLE person_table
+    #      RENAME COLUMN address TO home_address;
+    #      """)
+
+    # удаление столбца
+    # cur.execute("""
+    #         ALTER TABLE person_table
+    #         DROP COLUMN home_address;
+    #         """)
+
+
+
+# /////////////// LECTORY 38 ////////////////////
+
+
 import sqlite3
 
-
-with sqlite3.connect("users.db") as con:
+with sqlite3.connect("db_3.db") as con:
     cur = con.cursor()
-    cur.execute("""CREATE TABLE IF NOT EXISTS users(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
-                
-    )""")
+    cur.execute("""
+    SELECT *
+    FROM T1
+    LIMIT 2, 5
+    """)
+
+    # for res in cur:
+    #     print(res)
+
+    # res = cur.fetchall()
+    # print(res)
+
+    res1 = cur.fetchone()
+    print(res1)
+
+    res2 = cur.fetchmany()
+    print(res2)
